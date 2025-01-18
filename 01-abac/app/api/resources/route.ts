@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
-import { mockResources } from '@/database/mockData';
+import { mockResources } from "@/database/mockData";
+import { NextResponse } from "next/server";
 
 export async function GET() {
-  return NextResponse.json(mockResources);
-} 
+	return NextResponse.json(mockResources);
+}
