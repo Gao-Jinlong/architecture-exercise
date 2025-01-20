@@ -7,7 +7,14 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": ["./.next"]
+		"ignore": [
+			"node_modules",
+			"dist",
+			"build",
+			"public",
+			"package-lock.json",
+			".next"
+		]
 	},
 	"formatter": {
 		"enabled": true,

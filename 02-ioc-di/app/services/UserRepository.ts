@@ -1,18 +1,18 @@
+import { mockUsers } from "@/database/mockData";
 import { Service } from "./decorators";
 import type { IUser, IUserRepository } from "./interfaces";
 
-@Service("IUserRepository")
+@Service()
 export class UserRepository implements IUserRepository {
-	private users: IUser[] = [
-		{ id: 1, name: "张三", email: "zhangsan@example.com" },
-		{ id: 2, name: "李四", email: "lisi@example.com" },
-	];
+	private readonly id = Math.random().toString(36).slice(2, 10); // 添加一个随机 ID
+
+	private users: IUser[] = mockUsers;
 
 	getUsers(): IUser[] {
 		return this.users;
 	}
 
-	getUserById(id: number): IUser | undefined {
+	getUserById(id: string): IUser | undefined {
 		return this.users.find((user) => user.id === id);
 	}
 

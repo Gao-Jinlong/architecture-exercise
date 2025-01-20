@@ -1,6 +1,6 @@
 export class Container {
 	private static instance: Container;
-	private dependencies: Map<string, any> = new Map();
+	private dependencies: Map<string, unknown> = new Map();
 
 	private constructor() {}
 
@@ -11,17 +11,15 @@ export class Container {
 		return Container.instance;
 	}
 
-	register(key: string, dependency: any): void {
+	register<T>(key: string, dependency: T): void {
 		this.dependencies.set(key, dependency);
 	}
 
 	resolve<T>(key: string): T {
-		console.log("🚀 ~ Container ~ dependency:", key, dependency);
-
 		const dependency = this.dependencies.get(key);
 		if (!dependency) {
 			throw new Error(`依赖 ${key} 未注册`);
 		}
-		return dependency;
+		return dependency as T;
 	}
 }

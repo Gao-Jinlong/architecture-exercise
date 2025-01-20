@@ -1,16 +1,19 @@
+import { AuthService } from "./AuthService";
+import { UserRepository } from "./UserRepository";
 import { Inject, Service } from "./decorators";
 import type { IUser, IUserRepository, IUserService } from "./interfaces";
 
-@Service("IUserService")
+@Service()
 export class UserService implements IUserService {
-	@Inject("IUserRepository")
+	@Inject(UserRepository)
 	private readonly userRepository!: IUserRepository;
+	private readonly authService!: AuthService;
 
 	getAllUsers(): IUser[] {
 		return this.userRepository.getUsers();
 	}
 
-	getUser(id: number): IUser | undefined {
+	getUser(id: string): IUser | undefined {
 		return this.userRepository.getUserById(id);
 	}
 
